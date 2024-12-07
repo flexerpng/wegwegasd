@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="telegram:bot" content="@vladshnurenkobot">
+    <title>Crypto Mining Tapper</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="pool-info">
+                <h2>Общий пул</h2>
+                <div class="pool-amount">10,000 USDT</div>
+            </div>
+            <div class="user-info">
+                <div class="user-balance">
+                    <span>Ваш баланс:</span>
+                    <span class="balance-amount">0 USDT</span>
+                </div>
+                <div class="mining-power">
+                    <span>Мощность майнинга:</span>
+                    <span class="power-amount">0 H/s</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="mining-animation" id="mining-animation">
+                <div class="coin-container"></div>
+            </div>
+            
+            <section class="miners-grid">
+                <!-- Miners will be dynamically added here -->
+            </section>
+
+            <section class="achievements-section">
+                <h3>Достижения</h3>
+                <div class="achievements-container" id="achievements-list">
+                    <!-- Achievements will be added here -->
+                </div>
+            </section>
+
+            <section class="upgrade-section">
+                <h3>Улучшения</h3>
+                <div class="upgrades-container">
+                    <!-- Upgrades will be dynamically added here -->
+                </div>
+            </section>
+
+            <section class="referral-section">
+                <h3>Реферальная система</h3>
+                <div class="referral-container">
+                    <div class="referral-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Ваши рефералы:</span>
+                            <span class="stat-value" id="referral-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Бонус от рефералов:</span>
+                            <span class="stat-value" id="referral-bonus">0 USDT</span>
+                        </div>
+                    </div>
+                    <div class="referral-link-container">
+                        <input type="text" id="referral-link" readonly class="referral-input">
+                        <button class="copy-button" id="copy-referral">Копировать</button>
+                    </div>
+                    <div class="referral-info">
+                        <p>Приглашайте друзей и получайте 10% от их майнинга!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="stats">
+                <div class="total-mined">Всего намайнено: <span>0 USDT</span></div>
+                <div class="mining-rate">Скорость майнинга: <span>0 USDT/час</span></div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="mining-progress"></div>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

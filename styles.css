@@ -1,0 +1,383 @@
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #7B61FF;
+    --background-dark: #1A1B25;
+    --text-light: #FFFFFF;
+    --text-secondary: #B8B9CC;
+    --accent-color: #00F2FF;
+    --success-color: #2ECC71;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--background-dark), #2A2B35);
+    color: var(--text-light);
+    min-height: 100vh;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.pool-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pool-amount {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.main-content {
+    display: grid;
+    gap: 30px;
+}
+
+.miners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.miner-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s;
+}
+
+.miner-card:hover {
+    transform: translateY(-5px);
+}
+
+.miner-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.miner-info {
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.miner-info h4 {
+    margin: 0;
+    color: var(--accent-color);
+}
+
+.miner-info p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.buy-miner {
+    background: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+.buy-miner:hover {
+    background: var(--accent-hover-color);
+}
+
+.buy-miner:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+.upgrade-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.upgrades-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+/* Анимация майнинга */
+.mining-animation {
+    position: relative;
+    height: 100px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.coin-container {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>');
+    animation: coinFloat 3s infinite;
+    opacity: 0;
+}
+
+@keyframes coinFloat {
+    0% {
+        transform: translateY(100%) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Достижения */
+.achievements-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.achievements-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.achievement-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card.locked {
+    filter: grayscale(1);
+    opacity: 0.7;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.achievement-card:hover::before {
+    left: 100%;
+}
+
+/* Прогресс бар */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+/* Анимации */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px var(--accent-color); }
+    50% { box-shadow: 0 0 20px var(--accent-color); }
+    100% { box-shadow: 0 0 5px var(--accent-color); }
+}
+
+/* Анимации для чисел */
+.number-animation {
+    animation: numberPop 0.3s ease-out;
+}
+
+@keyframes numberPop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .pool-amount {
+        font-size: 2em;
+    }
+}
+
+/* Реферальная система */
+.referral-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.referral-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.referral-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-width: 200px;
+}
+
+.stat-label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1.5em;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.referral-link-container {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.referral-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--accent-color);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-light);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.referral-input:hover {
+    border-color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.referral-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+}
+
+.copy-button {
+    padding: 12px 24px;
+    background: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    color: var(--background-dark);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.referral-info {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
